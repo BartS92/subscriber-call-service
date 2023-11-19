@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: subscriber-call-manager-service
+  webservices:
+    path: /subscriber-call-manager/service
+  datasource:
+    password: ${POSTGRESQL_PASSWORD:postgres}
+    url: ${POSTGRESQL_DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${POSTGRESQL_USER:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  rabbitmq:
+    host: localhost
+    password: guest
+    port: 5672
+    username: guest
+
+rabbitmq-settings:
+  queues:
+    start-call: start_call
+    finish-call: finish_call
+  exchange: rabbit_exchange
+  routing-keys:
+    start-call: start_call_routingkey
+    finish-call: finish_call_routingkey
+
+server:
+  port: 8083
+  jetty:
+    threads:
+      idle-timeout: 1000
+      max: 20
+      min: 10
+
+management:
+  server:
+    port: 8083
+  endpoints:
+    web:
+      exposure:
+        include: health
+      base-path: /
+      path-mapping:
+        health: healthcheck

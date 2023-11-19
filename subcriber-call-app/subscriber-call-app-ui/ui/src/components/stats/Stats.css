@@ -1,0 +1,19 @@
+.stats {
+    padding: 15px;
+}
+
+.header{
+    font-weight: bold;
+}
+
+.row {
+    display: flex;
+}
+
+.row div + div {
+    margin-left: 5px;
+}
+
+.info {
+    margin-top: 20px;
+}

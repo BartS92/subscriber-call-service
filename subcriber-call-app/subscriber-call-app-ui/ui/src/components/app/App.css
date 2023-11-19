@@ -1,0 +1,37 @@
+.app {
+    position: relative;
+    top:30px;
+    left: 30px;
+}
+
+.call {
+    overflow: hidden;
+}
+
+.error {
+    font-weight: bold;
+}
+
+
+.numbers {
+    display: flex;
+}
+
+.numbers input + input{
+    margin-left: 10px;
+}
+
+.numbers input {
+    flex: 1;
+}
+
+button {
+    margin-top: 5px;
+}
+.call-button {
+    float:left;
+}
+
+.finish-button {
+    float:right;
+}
