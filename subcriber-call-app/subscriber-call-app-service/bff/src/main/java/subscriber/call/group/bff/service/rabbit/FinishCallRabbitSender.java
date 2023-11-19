@@ -1,4 +1,4 @@
-package subscriber.call.group.bff.service;
+package subscriber.call.group.bff.service.rabbit;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -8,6 +8,6 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class CallDto implements Serializable {
-    private long initPhone;
-    private long receivingPhone;
+    private Long initPhone;
+    private Long receivingPhone;
 }

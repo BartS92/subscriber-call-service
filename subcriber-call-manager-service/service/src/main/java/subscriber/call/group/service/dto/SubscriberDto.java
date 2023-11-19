@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class SubscriberDto {
-    private long phone;
+    private Long phone;
     private String name;
 }
