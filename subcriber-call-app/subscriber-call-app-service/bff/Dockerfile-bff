@@ -7,6 +7,11 @@ COPY ./mvnw pom.xml ./
 COPY src ./src
 
 
+ENV RABBIT_HOST=host.docker.internal
+ENV RABBIT_PASSWORD=guest
+ENV RABBIT_PORT=5672
+ENV RABBIT_USERNAME=guest
+
 
 EXPOSE 8080
 CMD ["./mvnw", "spring-boot:run"]

@@ -39,7 +39,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - RABBIT_HOST=localhost
+      - RABBIT_HOST=host.docker.internal
       - RABBIT_PASSWORD=guest
       - RABBIT_PORT=5672
       - RABBIT_USERNAME=guest
@@ -71,7 +71,7 @@ services:
       POSTGRESQL_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/postgres
       POSTGRESQL_USER: postgres
       POSTGRESQL_PASSWORD: postgres
-      RABBIT_HOST: localhost
+      RABBIT_HOST: host.docker.internal
       RABBIT_PASSWORD: guest
       RABBIT_PORT: 5672
       RABBIT_USERNAME: guest

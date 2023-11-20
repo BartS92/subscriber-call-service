@@ -11,7 +11,7 @@ ENV POSTGRESQL_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/postgr
 ENV POSTGRESQL_USER=postgres
 ENV POSTGRESQL_PASSWORD=postgres
 
-ENV RABBIT_HOST=localhost
+ENV RABBIT_HOST=host.docker.internal
 ENV RABBIT_PASSWORD=guest
 ENV RABBIT_PORT=5672
 ENV RABBIT_USERNAME=guest
