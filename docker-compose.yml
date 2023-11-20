@@ -13,6 +13,7 @@ services:
     image: subscriber-call-app-ui
     build:
       context: ./subcriber-call-app/subscriber-call-app-ui/ui
+      target: production
       dockerfile: Dockerfile-ui
     ports:
       - "3000:3000"
