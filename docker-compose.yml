@@ -3,11 +3,6 @@ version: "3.8"
 services:
   rabbitmq:
     image: rabbitmq:3-management
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:5672" ]
-      interval: 30s
-      timeout: 30s
-      retries: 3
     container_name: 'rabbitmq'
     ports:
       - 5672:5672
@@ -24,8 +19,8 @@ services:
   subscriber-call-app-service:
     platform: linux/x86_64
     depends_on:
-      rabbitmq:
-        condition: service_started
+      - subscriber-call-app-ui
+      - rabbitmq
     healthcheck:
       test: curl http://localhost:8080/ || exit 1
       interval: 30s
@@ -35,7 +30,8 @@ services:
     container_name: subscriber-call-app-service
     image: subscriber-call-app-service
     build:
-      dockerfile: ./subcriber-call-app/subscriber-call-app-service/bff/Dockerfile-bff
+      context: ./subcriber-call-app/subscriber-call-app-service/bff
+      dockerfile: ./Dockerfile-bff
     ports:
       - "8080:8080"
     environment:
@@ -47,7 +43,8 @@ services:
     container_name: postgres-test
     image: postgres-test
     build:
-      dockerfile: ./subcriber-call-manager-service/service/Dockerfile-postgres
+      context: ./subcriber-call-manager-service/service
+      dockerfile: ./Dockerfile-postgres
     ports:
       - 5432:5432
     environment:
@@ -60,11 +57,12 @@ services:
       postgres:
         condition: service_started
       rabbitmq:
-        condition: service_healthy
+        condition: service_started
     container_name: subcriber-call-manager-service
     image: subcriber-call-manager-service
     build:
-      dockerfile: ./subcriber-call-manager-service/service/Dockerfile-service
+      context: ./subcriber-call-manager-service/service
+      dockerfile: ./Dockerfile-service
     ports:
       - "8083:8083"
     environment:

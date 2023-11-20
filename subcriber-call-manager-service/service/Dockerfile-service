@@ -1,10 +1,8 @@
 FROM eclipse-temurin:17-jdk-jammy as base
 
 WORKDIR /app
-
-COPY ./.mvn .mvn
-COPY ./mvnw pom.xml ./
-
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
 COPY src ./src
 
 ENV POSTGRESQL_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/postgres
