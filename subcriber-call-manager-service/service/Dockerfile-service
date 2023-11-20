@@ -1,11 +1,7 @@
 FROM eclipse-temurin:17-jdk-jammy as base
-WORKDIR /app
 
-COPY ../.mvn .mvn
-COPY ../mvnw pom.xml ./
-RUN ./mvnw dependency:resolve
-
-COPY src ./src
+WORKDIR /app/src
+COPY . .
 
 ENV POSTGRESQL_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/postgres
 ENV POSTGRESQL_USER=postgres
@@ -16,4 +12,7 @@ ENV RABBIT_PASSWORD=guest
 ENV RABBIT_PORT=5672
 ENV RABBIT_USERNAME=guest
 
+
+
+EXPOSE 8083
 CMD ["./mvnw", "spring-boot:run"]

@@ -12,14 +12,10 @@ services:
     container_name: subscriber-call-app-ui
     image: subscriber-call-app-ui
     build:
-      context: subcriber-call-app/subcriber-call-app-ui/ui
+      context: ./subcriber-call-app/subscriber-call-app-ui/ui
       dockerfile: Dockerfile-ui
-      target: production
     ports:
       - "3000:3000"
-    networks:
-      search_app_net:
-        ipv4_address: 192.168.2.5
   subscriber-call-app-service:
     platform: linux/x86_64
     depends_on:
@@ -34,7 +30,7 @@ services:
     container_name: subscriber-call-app-service
     image: subscriber-call-app-service
     build:
-      dockerfile: subcriber-call-app/subscriber-call-app-service/Dockerfile-service
+      dockerfile: ./subcriber-call-app/subscriber-call-app-service/bff/Dockerfile-bff
     ports:
       - "8080:8080"
     environment:
@@ -43,7 +39,7 @@ services:
       - RABBIT_PORT=5672
       - RABBIT_USERNAME=guest
   postgres:
-    container_name: postgres
+    container_name: postgres-test
     image: postgres-test
     build:
       dockerfile: ./subcriber-call-manager-service/service/Dockerfile-postgres
@@ -64,8 +60,10 @@ services:
     image: subcriber-call-manager-service
     build:
       dockerfile: ./subcriber-call-manager-service/service/Dockerfile-service
+    ports:
+      - "8083:8083"
     environment:
-      POSTGRESQL_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5433/postgres
+      POSTGRESQL_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/postgres
       POSTGRESQL_USER: postgres
       POSTGRESQL_PASSWORD: postgres
       RABBIT_HOST: localhost

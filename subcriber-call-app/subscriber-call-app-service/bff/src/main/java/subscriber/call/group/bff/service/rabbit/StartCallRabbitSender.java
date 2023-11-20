@@ -12,7 +12,7 @@ import subscriber.call.group.bff.dto.CallDto;
 import subscriber.call.group.bff.dto.CallResponseDto;
 
 @Slf4j
-@Service
+@Service("startCallRabbitSender")
 @Data
 public class StartCallRabbitSender {
 

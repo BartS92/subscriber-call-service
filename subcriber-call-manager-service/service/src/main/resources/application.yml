@@ -3,6 +3,11 @@ spring:
     name: subscriber-call-manager-service
   webservices:
     path: /subscriber-call-manager/service
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    password: ${RABBIT_PASSWORD:guest}
+    port: ${RABBIT_PORT:5672}
+    username: ${RABBIT_USERNAME:guest}
   datasource:
     password: ${POSTGRESQL_PASSWORD:postgres}
     url: ${POSTGRESQL_DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres}
@@ -11,12 +16,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
-  rabbitmq:
-    host: localhost
-    password: guest
-    port: 5672
-    username: guest
 
 rabbitmq-settings:
   queues:
