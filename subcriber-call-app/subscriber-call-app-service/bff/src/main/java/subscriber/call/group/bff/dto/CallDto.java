@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import subscriber.call.group.bff.domain.ConversationStatus;
 
-@AllArgsConstructor
 @Data
+@AllArgsConstructor
 public class CallDto implements Serializable {
     private long initPhone;
     private long receivingPhone;

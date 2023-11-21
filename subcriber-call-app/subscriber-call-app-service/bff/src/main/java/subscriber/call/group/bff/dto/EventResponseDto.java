@@ -1,11 +1,11 @@
 package subscriber.call.group.bff.dto;
 
 import java.util.Date;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class EventResponseDto implements Comparable<EventResponseDto> {
     private long id;
 

@@ -25,7 +25,7 @@ function Stats() {
       <div className={ 'row' }>
         <div></div>
         <div>{ phone }</div>
-        <div>  </div>
+          <div className={'dash'}> - </div>
         <div>({ `${ timeData?.incomingTime }sec+${ timeData?.outgoingTime }sec` })</div>
       </div>
     </>
@@ -36,7 +36,7 @@ function Stats() {
       <div className={ 'row' }>
         <div>{ initPhone }</div>
         <div>{ receivingPhone }</div>
-        <div> - </div>
+        <div className={'dash'}> - </div>
         <div>({ `${ timeData?.incomingTime }sec+${ timeData?.outgoingTime }sec` })</div>
       </div>
     </>

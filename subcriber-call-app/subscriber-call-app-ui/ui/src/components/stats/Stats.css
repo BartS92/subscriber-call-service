@@ -9,6 +9,14 @@
 .row {
     display: flex;
 }
+.row div{
+    min-width: 60px;
+}
+
+.row .dash{
+    min-width: 10px !important;
+}
+
 
 .row div + div {
     margin-left: 5px;
