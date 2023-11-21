@@ -28,4 +28,11 @@ public class CallUtils {
         response.setMessage(String.format("%d number is busy", phone));
         return Utils.convertToJson(response);
     }
+
+    public static String createAlreadyStartedResponse (long initPhone, long receivingPhone) {
+        var response =  new CallResponseDto();
+        response.setStatus(Status.STARTED);
+        response.setMessage(String.format("the call between %d and %d already started", initPhone, receivingPhone));
+        return Utils.convertToJson(response);
+    }
 }

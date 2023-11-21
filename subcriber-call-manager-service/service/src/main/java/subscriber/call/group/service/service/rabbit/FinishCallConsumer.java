@@ -19,7 +19,7 @@ public class FinishCallConsumer {
     private final EventService eventService;
 
     @RabbitListener(queues = "${rabbitmq-settings.queues.finish-call}", concurrency = "3")
-    public String receive(CallDto dto) {
+    public String receiveAndReply(CallDto dto) {
         var result = CallUtils.validatePhones(dto.getInitPhone(), dto.getReceivingPhone());
         if (result != null){
             Utils.convertToJson(result);
@@ -38,7 +38,8 @@ public class FinishCallConsumer {
                 response.setMessage(String.format("Last call event for %d and %d with %s status ", dto.getInitPhone(), dto.getReceivingPhone(), event.getStatus()));
             }
         } else {
-            response.setMessage(String.format("Calls between %d and %d has been finished", dto.getInitPhone(), dto.getReceivingPhone()));
+            response.setStatus(Status.NO_STATUS);
+            response.setMessage(String.format("No active calls between %d and %d", dto.getInitPhone(), dto.getReceivingPhone()));
         }
 
         return Utils.convertToJson(response);

@@ -10,7 +10,8 @@ public enum Status {
     STARTED("STARTED"),
     FINISHED("FINISHED"),
     BUSY("BUSY"),
-    ERROR("ERROR");
+    ERROR("ERROR"),
+    NO_STATUS("NO_STATUS");
 
     private String value;
 }

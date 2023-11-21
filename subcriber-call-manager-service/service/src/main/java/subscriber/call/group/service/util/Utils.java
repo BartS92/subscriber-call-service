@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.util.Date;
 
 public class Utils {
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static Date getCurrentTimestamp() {
         var input = new Date();
@@ -14,7 +15,7 @@ public class Utils {
     }
 
     public static String convertToJson(Object object) {
-        var mapper = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        var mapper = objectMapper.writer().withDefaultPrettyPrinter();
         try {
             return mapper.writeValueAsString(object);
         } catch (JsonProcessingException ex) {

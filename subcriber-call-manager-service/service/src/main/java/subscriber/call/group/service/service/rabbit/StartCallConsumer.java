@@ -21,7 +21,7 @@ public class StartCallConsumer {
     private final SubscriberService subscriberService;
 
     @RabbitListener(queues = "${rabbitmq-settings.queues.start-call}", concurrency = "3")
-    public String receive(CallDto dto)  {
+    public String receiveAndReply(CallDto dto)  {
         var initPhone = dto.getInitPhone();
         var receivingPhone = dto.getReceivingPhone();
 
@@ -41,9 +41,14 @@ public class StartCallConsumer {
         else {
             var receivingPhoneEvent = eventService.getLastPhoneEvent(receivingPhone);
 
-            if ((receivingPhoneEvent != null && Status.valueOf(receivingPhoneEvent.getStatus()) == Status.STARTED) || initPhone.equals(receivingPhone)) {
-                return CallUtils.createBusyResponse(receivingPhone);
-            } else {
+            if (receivingPhoneEvent != null && Status.valueOf(receivingPhoneEvent.getStatus()) == Status.STARTED) {
+                if (!receivingPhoneEvent.getInitPhone().equals(initPhone)){
+                    return CallUtils.createBusyResponse(receivingPhone);
+                } else {
+                    return CallUtils.createAlreadyStartedResponse(initPhone, receivingPhone);
+                }
+            }
+            else {
                 status = Status.STARTED;
                 msg = String.format("Call between %d and %d has been started",initPhone, receivingPhone);
             }
@@ -51,10 +56,7 @@ public class StartCallConsumer {
 
         eventService.createAndSave(initPhone, receivingPhone, status);
 
-        var response = new CallResponseDto();
-        response.setStatus(status);
-        response.setMessage(msg);
-
+        var response = new CallResponseDto(status, msg);
         return Utils.convertToJson(response);
     }
 
