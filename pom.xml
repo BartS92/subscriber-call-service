@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>gamesys.csp</groupId>
+    <artifactId>subscriber-call-service-parent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <name>subscriber-call-service</name>
+    <description>This should purely be used to help import in to IDE's do not build the project from here</description>
+    <url>https://github.com/BartS92/subscriber-call-service</url>
+
+    <scm>
+        <connection>https://github.com/BartS92/subscriber-call-service</connection>
+        <developerConnection>
+            scm:git:ssh://git@github.com:BartS92/subscriber-call-service.git
+        </developerConnection>
+        <url>origin</url>
+    </scm>
+
+    <modules>
+        <module>call-service-app-bff/bff</module>
+        <module>subscriber-call-service/service</module>
+    </modules>
+</project>

@@ -16,8 +16,7 @@ import subscriber.call.group.service.service.EventService;
 @RequestMapping(path = "${spring.webservices.path}")
 public class StatsController {
 
-    @Autowired
-    private EventService eventService;
+    private final EventService eventService;
 
 
     @GetMapping("/stats")

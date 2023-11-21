@@ -21,8 +21,7 @@ import subscriber.call.group.service.service.SubscriberService;
 @RequestMapping(path = "${spring.webservices.path}")
 public class SubscriberController {
 
-    @Autowired
-    private SubscriberService subscriberService;
+    private final SubscriberService subscriberService;
 
 
     @PostMapping("/subscriber")

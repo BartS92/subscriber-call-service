@@ -1,8 +1,8 @@
 package subscriber.call.group.service.service.rabbit;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import subscriber.call.group.service.domain.Status;
 import subscriber.call.group.service.dto.CallDto;
@@ -14,13 +14,11 @@ import subscriber.call.group.service.util.Utils;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class StartCallConsumer {
+    private final EventService eventService;
 
-    @Autowired
-    private EventService eventService;
-
-    @Autowired
-    private SubscriberService subscriberService;
+    private final SubscriberService subscriberService;
 
     @RabbitListener(queues = "${rabbitmq-settings.queues.start-call}", concurrency = "3")
     public String receive(CallDto dto)  {
@@ -42,9 +40,9 @@ public class StartCallConsumer {
         }
         else {
             var receivingPhoneEvent = eventService.getLastPhoneEvent(receivingPhone);
+
             if ((receivingPhoneEvent != null && Status.valueOf(receivingPhoneEvent.getStatus()) == Status.STARTED) || initPhone.equals(receivingPhone)) {
-                status = Status.BUSY;
-                msg = String.format("%d number is busy", receivingPhone);
+                return CallUtils.createBusyResponse(receivingPhone);
             } else {
                 status = Status.STARTED;
                 msg = String.format("Call between %d and %d has been started",initPhone, receivingPhone);
@@ -59,4 +57,6 @@ public class StartCallConsumer {
 
         return Utils.convertToJson(response);
     }
+
+
 }

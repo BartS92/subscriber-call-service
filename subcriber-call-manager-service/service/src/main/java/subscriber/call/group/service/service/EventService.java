@@ -37,4 +37,8 @@ public class EventService {
     public Event getLastPhoneEvent(long phone) {
         return repository.getLastPhoneEvent(phone);
     }
+
+    public Event getLastCallEvent(long initPhone, long receivingPhone) {
+        return repository.getLastCallEvent(initPhone, receivingPhone);
+    }
 }

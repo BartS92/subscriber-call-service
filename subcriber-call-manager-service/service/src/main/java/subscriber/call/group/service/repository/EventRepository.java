@@ -14,4 +14,7 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 
     @Query(value = "Select * from events where (init_phone= :phone or receiving_phone= :phone) ORDER BY date_created DESC LIMIT 1", nativeQuery = true)
     Event getLastPhoneEvent(@Param("phone") long phone);
+
+    @Query(value = "Select * from events where (init_phone= :initPhone and receiving_phone= :receivingPhone) ORDER BY date_created DESC LIMIT 1", nativeQuery = true)
+    Event getLastCallEvent(@Param("initPhone") long initPhone, @Param("receivingPhone")long receivingPhone);
 }
