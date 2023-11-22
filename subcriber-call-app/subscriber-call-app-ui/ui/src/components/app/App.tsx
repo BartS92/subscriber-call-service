@@ -34,10 +34,10 @@ function App() {
     <div className={'app'} style={{width: 500}}>
         <div className={ 'call' }>
             <div className={ 'numbers' }>
-                <input placeholder={ 'Your phone number' } value={ initPhone } onChange={ (e) => {
+                <input placeholder={ 'Your phone number' } value={ initPhone } disabled={callProgress} onChange={ (e) => {
                     setInitPhone(e.currentTarget.value)
                 } }/>
-                <input placeholder={ 'Friends phone number' } value={ receivingPhone } onChange={ (e) => {
+                <input placeholder={ 'Friends phone number' } value={ receivingPhone } disabled={callProgress} onChange={ (e) => {
                     setReceivingPhone(e.currentTarget.value)
                 } }/>
             </div>
