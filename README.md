@@ -81,16 +81,19 @@ init table has the next number:
 |   345678    | "Jackson"  |
 |  539390     | "Garry"  |
 
-So if you try any call with these number you will see next:
+3.1 So if you try any call with these number you will see next:
 ![img_2.png](img_2.png)
 
-And after finish call it looks like
+3.2 And after finish call it looks like
 ![img_3.png](img_3.png)
 
-If you try to call not existed subscriber you will see: 
+3.3 If you try to call not existed subscriber you will see: 
 ![img_4.png](img_4.png)
 
-To create new user just use curl
+3.4if number is more than 6 symbols then the error appears
+![img_5.png](img_5.png)
+
+3.5 To create new user just use curl
 
 ```
 curl --location 'localhost:8083/subscriber-call-manager/service/subscriber' \
