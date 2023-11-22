@@ -9,6 +9,7 @@ ENV RABBIT_HOST=host.docker.internal
 ENV RABBIT_PASSWORD=guest
 ENV RABBIT_PORT=5672
 ENV RABBIT_USERNAME=guest
+ENV SUBSCRIBER_CALL_MANAGER_HOST=http://host.docker.internal:8083
 
 RUN mvn clean package -DskipTests
 

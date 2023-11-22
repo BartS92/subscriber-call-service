@@ -39,5 +39,5 @@ management:
         health: healthcheck
 
 subscriber-call-manager-service:
-  host: ${IGS_WEB_SERVICE_HOST:http://localhost:8083}
+  host: ${SUBSCRIBER_CALL_MANAGER_HOST:http://localhost:8083}
   path: /subscriber-call-manager/service

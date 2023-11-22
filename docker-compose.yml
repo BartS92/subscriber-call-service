@@ -40,6 +40,7 @@ services:
       - RABBIT_PASSWORD=guest
       - RABBIT_PORT=5672
       - RABBIT_USERNAME=guest
+      - SUBSCRIBER_CALL_MANAGER_HOST=host.docker.internal:8083
   postgres:
     container_name: postgres-test
     image: postgres-test
