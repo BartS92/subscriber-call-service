@@ -14,7 +14,7 @@ ENV RABBIT_PASSWORD=guest
 ENV RABBIT_PORT=5672
 ENV RABBIT_USERNAME=guest
 
-RUN mvn  clean package -P development -DskipTests
+RUN mvn  clean package -DskipTests
 
 FROM openjdk:17-alpine
 COPY --from=builder /app/target/service-1.0.0.jar /service.jar
