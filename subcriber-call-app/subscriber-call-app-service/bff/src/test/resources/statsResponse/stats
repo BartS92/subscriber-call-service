@@ -1,0 +1,16 @@
+[
+    {
+        "id": 27,
+        "status": "STARTED",
+        "initPhone": 539390,
+        "receivingPhone": 234567,
+        "dateCreated": "2023-11-21T20:38:48.257+00:00"
+    },
+    {
+        "id": 28,
+        "status": "FINISHED",
+        "initPhone": 539390,
+        "receivingPhone": 234567,
+        "dateCreated": "2023-11-21T20:39:17.608+00:00"
+    }
+]
