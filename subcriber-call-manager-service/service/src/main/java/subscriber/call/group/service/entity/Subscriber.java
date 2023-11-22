@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Subscriber {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subscriber_seq")
-    @SequenceGenerator(name = "subscriber_seq", sequenceName = "subscriber_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "name")

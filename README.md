@@ -5,8 +5,6 @@
 * [Description](#description)
 * [Run](#run)
 * [Usage](#usage)
-    * [Profile requests](#profile-requests)
-    * [Analyses requests](#analyses-requests)
 
 ## Description
 
@@ -72,7 +70,38 @@ After running the service you can manage calls:
 1. Open `localhost:3000`
 2. Set phones and click **Make a call** button
 3. To finish call click  **Finish call**
-4. For Statistics open `localhost:3000/stats`
+
+init table has the next number:
+#### Subscribers
+
+|     id      | name |
+|:-----------:|:----:|
+|   123456    | "Danny" |
+|   234567    | "Miguel"  |
+|   345678    | "Jackson"  |
+|  539390     | "Garry"  |
+
+So if you try any call with these number you will see next:
+![img_2.png](img_2.png)
+
+And after finish call it looks like
+![img_3.png](img_3.png)
+
+If you try to call not existed subscriber you will see: 
+![img_4.png](img_4.png)
+
+To create new user just use curl
+
+```
+curl --location 'localhost:8083/subscriber-call-manager/service/subscriber' \
+--header 'Content-Type: application/json' \
+--data '{
+        "phone": 333333,
+        "name": "Johny"
+}'
+```
+
+4. To see statistics open `localhost:3000/stats`
 
 
 
