@@ -21,7 +21,7 @@
     </scm>
 
     <modules>
-        <module>call-service-app-bff/bff</module>
-        <module>subscriber-call-service/service</module>
+        <module>subcriber-call-app/subscriber-call-app-service/bff</module>
+        <module>subcriber-call-manager-service/service</module>
     </modules>
 </project>
