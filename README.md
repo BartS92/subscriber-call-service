@@ -84,6 +84,8 @@ init table has the next number:
 3.1 So if you try any call with these number you will see next:
 ![img_2.png](img_2.png)
 
+**When initialized phone makes a call it means that initialized phone exists in DB!**
+
 3.2 And after finish call it looks like
 ![img_3.png](img_3.png)
 
