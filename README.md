@@ -52,10 +52,7 @@ Subscribers table contains data at start the container:
 
 
 2. `subscriber-call-app-service` - application with UI and BFF
-
-3. `postgres-test` - database for tests. Contains the same data as `postgres` container
-
-4. `subcriber-call-manager-service` - container that runs unit and integration tests
+3. subcriber-call-manager-service` - container that runs unit and integration tests
 
 
 Sometimes there can be issue with retrieving dependency for `cybercube-service` container. (Maybe I have bad connection)
