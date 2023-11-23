@@ -2,7 +2,6 @@ package subscriber.call.group.service.util;
 
 import subscriber.call.group.service.domain.Status;
 import subscriber.call.group.service.dto.CallResponseDto;
-import subscriber.call.group.service.entity.Event;
 
 public class CallUtils {
 
