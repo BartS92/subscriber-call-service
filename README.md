@@ -10,6 +10,7 @@
 
 Service manages calls between different subscribers. It has simple UI
 ![./images/img.png](./images/img.png)
+
 To start a call you write two numbers: initial and receiving phones.
 **Make a Call** button runs call between subscribers.
 **Finish call** button finishes call.
@@ -97,7 +98,7 @@ init table has the next number:
 
 ![img6.png](images/img6.png)
 
-4 To create new user just use curl
+4. To create new user just use curl
 
 ```
 curl --location 'localhost:8083/subscriber-call-manager/service/subscriber' \
@@ -108,7 +109,7 @@ curl --location 'localhost:8083/subscriber-call-manager/service/subscriber' \
 }'
 ```
 
-4. To see statistics open `localhost:3000/stats`
+5. To see statistics open `localhost:3000/stats`
 
 
 
