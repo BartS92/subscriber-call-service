@@ -17,6 +17,11 @@ function App() {
             setError(`Error: Phone  ${ phone.trim() } contains more than 6 numbers`)
             return false;
         }
+
+        if (phone.trim().length < 6){
+            setError(`Error: Phone  ${ phone.trim() } contains less than 6 numbers`)
+            return false;
+        }
         return true;
     }
 
