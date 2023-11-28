@@ -53,11 +53,16 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5 
   subcriber-call-manager-service:
     platform: linux/x86_64
     depends_on:
       postgres:
-        condition: service_started
+        condition: service_healthy
       rabbitmq:
         condition: service_started
     container_name: subcriber-call-manager-service
